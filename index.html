@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Graduation ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+    overflow:hidden;
+}
+
+.container{
+    text-align:center;
+}
+
+/* AMPOP */
+/* AMPOP */
+.envelope{
+    position:relative;
+    width:320px;
+    height:220px;
+    margin:auto;
+    cursor:pointer;
+    perspective:1000px;
+    overflow:hidden; /* Tambahan penting */
+}
+
+/* Surat */
+.letter{
+    position:absolute;
+    left:50%;
+    bottom:20px;
+
+    width:280px;
+    height:360px;
+
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    overflow-y:auto;
+
+    z-index:10; /* lebih tinggi dari amplop */
+
+    transform:translateX(-50%) translateY(300px);
+
+    transition:1s ease;
+}
+
+/* Surat keluar saat dibuka */
+.open .letter{
+    transform:translateX(-50%) translateY(-20px);
+}
+
+/* Badan amplop */
+.base{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:200px;
+    background:#ff6b81;
+    border-radius:0 0 15px 15px;
+    z-index:2;
+}
+
+/* Tutup amplop */
+.flap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:0;
+    height:0;
+    border-left:160px solid transparent;
+    border-right:160px solid transparent;
+    border-top:120px solid #ff4d6d;
+
+    transform-origin:top;
+    transition:1s ease;
+    z-index:5;
+}
+
+/* Saat dibuka */
+.open{
+    overflow:visible; /* Surat boleh keluar */
+}
+
+.open .flap{
+    transform:rotateX(180deg);
+    z-index:0;
+}
+
+.letter h2{
+    color:#ff4d6d;
+    margin-bottom:10px;
+}
+
+.letter p{
+    color:#555;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.hint{
+    margin-top:20px;
+    color:white;
+    font-weight:600;
+    text-shadow:1px 1px 5px rgba(0,0,0,.2);
+}
+
+/* Scroll cantik */
+.letter::-webkit-scrollbar{
+    width:6px;
+}
+
+.letter::-webkit-scrollbar-thumb{
+    background:#ff6b81;
+    border-radius:10px;
+}
+
+/* Hati */
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    animation:float 4s linear infinite;
+    font-size:20px;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<div class="container">
+
+    <div class="envelope" onclick="openLetter()">
+
+        <div class="letter">
+            <h2>🎓 Happy Graduation, Sayang ❤️</h2>
+
+            <p>
+                happy graduation ya sayangku 🤍🎓 yaa the first one maaf yaa sayangg
+                karena kita ldr jadi aku gabisa kesana for some gift , but this is little gift 
+                <br><br>
+
+                welcome to the worldd lovee hahaha.I will always support you, i hope ur dream comes true.
+                meskipun yaa sebelum hari H kamu panik karena ternyata lupa beli bedak , kedepannya
+                jangan lupa yaa atau kalau gamau lupa bisa aku ingatkann sayangg
+                <br><br>
+
+                Semoga langkahmu ke depan selalu dipenuhi keberanian,
+                kesempatan yang baik, kesehatan, kebahagiaan,
+                dan kesuksesan yang selama ini kamu impikan.
+                Jangan pernah ragu pada kemampuanmu,
+                karena aku tahu kamu mampu mencapai hal-hal luar biasa.
+                <br><br>
+
+                Apa pun yang terjadi nanti,
+                aku akan selalu mendukungmu, mendoakanmu,
+                dan ikut bahagia melihat setiap pencapaianmu.
+                <br><br>
+
+                <b>Selamat Wisuda, cintaku.</b><br>
+                Teruslah bersinar, teruslah bermimpi,
+                dan jangan pernah berhenti percaya pada dirimu sendiri.
+                ❤️✨
+            </p>
+        </div>
+
+        <div class="base"></div>
+        <div class="flap"></div>
+
+    </div>
+
+    <div class="hint">💌 Klik amplop untuk membuka pesan</div>
+
+</div>
+
+<script>
+function openLetter(){
+    document.querySelector('.envelope').classList.toggle('open');
+}
+
+function createHeart(){
+    const heart = document.createElement('div');
+
+    heart.classList.add('heart');
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random()*100 + 'vw';
+    heart.style.animationDuration =
+        (3 + Math.random()*3) + 's';
+
+    document.querySelector('.hearts')
+        .appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart,500);
+</script>
+
+</body>
+</html>
